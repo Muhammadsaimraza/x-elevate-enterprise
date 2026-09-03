@@ -1,0 +1,15 @@
+# Local environment / secrets — never commit real credentials.
+.env
+
+# Local SQLite databases (e.g. xelevate.db) and journaling side files.
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+venv/
