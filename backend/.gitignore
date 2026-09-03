@@ -13,3 +13,5 @@
 __pycache__/
 *.py[cod]
 venv/
+psycopg2-binary
+asyncpg
