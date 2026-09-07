@@ -27,13 +27,12 @@ class Settings(BaseSettings):
     LINKEDIN_CLIENT_ID: Optional[str] = None
     LINKEDIN_CLIENT_SECRET: Optional[str] = None
 
-    # CORS
-    CORS_ORIGINS: str = "http://localhost:3000"
+    # CORS (Vercel Frontend aur Localhost dono allow karein)
+    CORS_ORIGINS: str = "https://x-elevate-enterprise.vercel.app,http://localhost:3000"
 
-    # Auth cookie transport security. Set to True when the API is served over
-    # HTTPS (production) so the browser only sends the cookie over TLS. Keep
-    # False for local plain-HTTP development (http://localhost).
-    COOKIE_SECURE: bool = False
+    # Auth cookie transport security. Vercel (HTTPS) par iska True hona lazmi hai
+    # warna browser cookie save nahi karega.
+    COOKIE_SECURE: bool = True
 
     # Gemini AI — optional, enables AI features when provided
     GEMINI_API_KEY: Optional[str] = None
