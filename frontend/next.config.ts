@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     
     // Vercel par live backend URL, aur local ke liye localhost
     const backendUrl = isProd 
-      ? "https://x-elevate-enterprise-backend-9d6cy0kdu.vercel.app" 
+      ? "https://x-elevate-enterprise-backend.vercel.app" 
       : "http://localhost:8000";
 
     return [
