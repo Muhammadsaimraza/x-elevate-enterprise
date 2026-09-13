@@ -1,74 +1,36 @@
-# X-Elevate Enterprise
+# X-Elevate: Autonomous Multi-Agent B2B Growth Engine
 
-**16-Agent AI Swarm for X (Twitter) & LinkedIn Growth**
-
-Multi-step AI agent platform that orchestrates 16 specialized agents to automate content creation, trend analysis, engagement, lead generation, and analytics across X and LinkedIn.
-
-**Live Demo:** https://x-elevate-enterprise.vercel.app  
-**2-Minute Demo Video:** [Yahan apna Loom/YouTube link daalo]
-
----
 
 ## Project Overview
+X-Elevate is an event-driven platform powered by 16 specialized AI agents acting as a 24/7 digital sales team. It automates the entire outbound B2B sales funnel by discovering leads, enriching data, drafting hyper-personalized multi-channel outreach, and analyzing reply sentiment to completely replace manual prospecting bottlenecks.
 
-X-Elevate is a multi-agent AI system designed for social media growth. It uses a coordinated swarm of 16 specialized AI agents that work together to:
-
-- Analyze trends in real-time
-- Generate platform-optimized content (threads, carousels, posts)
-- Manage engagement and replies
-- Track competitors
-- Run A/B tests
-- Generate leads
-- Provide real-time analytics
-
-The system connects multiple external services and runs multi-step workflows automatically.
-
----
-
-## External Apps / Integrations Used
-
-1. **X (Twitter) API v2** – Posting, trend analysis, engagement, analytics
-2. **LinkedIn API** – Content publishing, profile data, engagement
-3. **Google Gemini** – Core AI reasoning & content generation for all agents
-4. **PostgreSQL** – User data, agent state, linked accounts
-5. **WebSockets** – Real-time metrics streaming to frontend
-
-*(Minimum 3 external apps requirement satisfied)*
-
----
-
-## Tech Stack
-
-- **Frontend:** Next.js 15 (App Router), TypeScript, Tailwind CSS
-- **Backend:** FastAPI (Python), SQLAlchemy, WebSockets
-- **Database:** PostgreSQL (SQLite for local dev)
-- **AI:** Google Gemini
-- **Auth:** JWT + HTTP-only cookies
-- **Deployment:** Vercel (frontend) + Docker-ready backend
-
----
+## External Apps Connected (3+)
+1. **X (Twitter) API:** Used for real-time intent signal monitoring, profile scanning, and tracking social engagement.
+2. **LinkedIn API / Profile Scraper:** Used to capture professional headlines, company insights, and trigger context-aware professional outreach.
+3. **Neon DB (Serverless PostgreSQL):** Used as the robust database layer for secure data persistence, JWT authentication state, and storing dynamic agent execution logs.
 
 ## Setup Instructions
+**1. Clone the repository:**
+`git clone https://github.com/Muhammadsaimraza/x-elevate-enterprise.git`
+`cd x-elevate-enterprise`
 
-### Prerequisites
-- Node.js 18+
-- Python 3.11+
-- PostgreSQL (optional — SQLite works for local)
+**2. Backend Setup (FastAPI):**
+`cd backend`
+`pip install -r requirements.txt`
+*Add your API keys (OpenAI, Neon DB URL, etc.) to a `.env` file.*
+`uvicorn app.main:app --reload`
 
-### Backend
+**3. Frontend Setup (Next.js):**
+`cd ../frontend`
+`npm install`
+*Add your backend URL to `.env.local`.*
+`npm run dev`
 
-```bash
-cd backend
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env
-# Edit .env and add your keys (GEMINI_API_KEY, X_API keys, etc.)
-uvicorn app.main:app --reload --port 8000
+## How We Tested Reliability
+Testing a highly dynamic, 16-agent non-deterministic AI system requires strict guardrails. We tested reliability by:
+* **Asynchronous Queues & Fallbacks:** Restructuring our communication layer to use asynchronous job queues to prevent concurrent agent requests from causing database timeouts or hitting external API rate limits.
+* **Proxy Configuration:** Implementing strict Next.js API rewrites to ensure seamless, CORS-compliant frontend-backend proxying in production (deployed on Vercel).
+* **State-Aware Templates:** Developing automated fail-safes and custom state-aware testing templates that govern agent behavior to prevent endless conversational loops or data corruption.
 
-### Frontend
-
-cd frontend
-npm install
-npm run dev
-Open http://localhost:3000
+## Two-Minute Demo
+[https://www.youtube.com/watch?v=4BYJ-YnPpt0]
